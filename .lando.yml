@@ -1,0 +1,15 @@
+name: workshop
+recipe: drupal8
+config:
+  webroot: web
+services:
+  appserver:
+    xdebug: true
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+    portforward: true
+proxy:
+  mailhog:
+    - workshop-mailhog.localhost

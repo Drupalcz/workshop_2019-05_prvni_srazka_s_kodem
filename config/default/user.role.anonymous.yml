@@ -1,0 +1,29 @@
+uuid: 9319dcc2-b4d6-411c-8af5-299da1e24136
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access devel information'
+  - 'access kint'
+  - 'access site-wide contact form'
+  - 'access user contact forms'
+  - 'access user profiles'
+  - 'create article content'
+  - 'create page content'
+  - 'delete any article content'
+  - 'delete any page content'
+  - 'edit own comments'
+  - 'execute php code'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'switch users'
+  - 'use text format restricted_html'

@@ -1,0 +1,5 @@
+name: Custom Form
+type: module
+description: Custom form.
+package: Workshop
+core: 8.x

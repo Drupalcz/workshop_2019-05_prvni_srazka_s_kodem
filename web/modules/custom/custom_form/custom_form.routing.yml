@@ -1,0 +1,7 @@
+custom_form.workshop:
+  path: '/custom-form/workshop'
+  defaults:
+    _title: 'Workshop'
+    _form: 'Drupal\custom_form\Form\Workshop'
+  requirements:
+    _permission: 'access content'
