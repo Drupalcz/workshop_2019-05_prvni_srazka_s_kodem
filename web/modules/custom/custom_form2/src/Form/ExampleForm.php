@@ -1,20 +1,20 @@
 <?php
 
-namespace Drupal\custom_form\Form;
+namespace Drupal\custom_form2\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Provides a Custom Form form.
+ * Provides a Custom Form 2 form.
  */
-class Workshop extends FormBase {
+class ExampleForm extends FormBase {
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'custom_form_workshop';
+    return 'custom_form2_example';
   }
 
   /**

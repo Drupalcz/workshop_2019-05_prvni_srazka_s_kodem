@@ -1,21 +1,23 @@
 <?php
 
-namespace Drupal\custom_widget\Plugin\Field\FieldWidget;
+namespace Drupal\custom_widget\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\WidgetBase;
+use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Defines the 'custom_widget_custom_text_widget' field widget.
+ * Plugin implementation of the 'Example' formatter.
  *
- * @FieldWidget(
- *   id = "custom_widget_custom_text_widget",
- *   label = @Translation("Custom text widget"),
- *   field_types = {"string"},
+ * @FieldFormatter(
+ *   id = "custom_widget_example",
+ *   label = @Translation("Example"),
+ *   field_types = {
+ *     "string"
+ *   }
  * )
  */
-class CustomTextWidgetWidget extends WidgetBase {
+class ExampleFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}
@@ -31,13 +33,13 @@ class CustomTextWidgetWidget extends WidgetBase {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
 
-    $element['foo'] = [
+    $elements['foo'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Foo'),
       '#default_value' => $this->getSetting('foo'),
     ];
 
-    return $element;
+    return $elements;
   }
 
   /**
@@ -51,12 +53,15 @@ class CustomTextWidgetWidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+  public function viewElements(FieldItemListInterface $items, $langcode) {
+    $element = [];
 
-    $element['value'] = $element + [
-      '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : 'Test',
-    ];
+    foreach ($items as $delta => $item) {
+      $element[$delta] = [
+        '#type' => 'item',
+        '#markup' => "<b>" . $item->value . "</b>",
+      ];
+    }
 
     return $element;
   }

@@ -5,3 +5,11 @@ field.widget.settings.custom_widget_custom_text_widget:
     foo:
       type: string
       label: Foo
+
+field.formatter.settings.custom_widget_example:
+  type: mapping
+  label: Example formatter settings
+  mapping:
+    foo:
+      type: string
+      label: Foo

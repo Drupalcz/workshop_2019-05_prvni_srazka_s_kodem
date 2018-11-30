@@ -1,0 +1,7 @@
+custom_form2.example:
+  path: '/custom-form2/example'
+  defaults:
+    _title: 'Example'
+    _form: 'Drupal\custom_form2\Form\ExampleForm'
+  requirements:
+    _permission: 'access content'
