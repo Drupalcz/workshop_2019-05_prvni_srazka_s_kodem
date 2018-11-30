@@ -1,4 +1,4 @@
-uuid: 9319dcc2-b4d6-411c-8af5-299da1e24136
+uuid: f5d62ebb-f7d3-4f5a-bb1e-ea0a4e464c12
 langcode: en
 status: true
 dependencies: {  }
@@ -14,16 +14,5 @@ permissions:
   - 'access devel information'
   - 'access kint'
   - 'access site-wide contact form'
-  - 'access user contact forms'
-  - 'access user profiles'
-  - 'create article content'
-  - 'create page content'
-  - 'delete any article content'
-  - 'delete any page content'
-  - 'edit own comments'
-  - 'execute php code'
-  - 'post comments'
   - 'search content'
-  - 'skip comment approval'
-  - 'switch users'
   - 'use text format restricted_html'

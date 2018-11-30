@@ -1,4 +1,4 @@
-uuid: 1739b29e-9c79-40d0-9170-69bae372f52b
+uuid: bec8fbfd-3e57-41df-9614-85eff943f2ce
 langcode: en
 status: true
 dependencies:
@@ -7,10 +7,12 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.field_testovaci_pole
     - image.style.thumbnail
     - node.type.article
   module:
     - comment
+    - custom_widget
     - image
     - path
     - text
@@ -59,6 +61,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_testovaci_pole:
+    weight: 121
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   path:
     type: path
     weight: 30
@@ -87,12 +97,11 @@ content:
     region: content
     third_party_settings: {  }
   title:
-    type: string_textfield
+    type: custom_widget_custom_text_widget
     weight: 0
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      foo: sdfsfdf
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

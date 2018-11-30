@@ -1,4 +1,4 @@
-uuid: 8aa43d8b-1acb-4b5f-a806-226231f9af5b
+uuid: d1debf7b-08aa-4f6d-8731-ee24c16c32c4
 langcode: en
 status: true
 dependencies: {  }
@@ -15,24 +15,7 @@ permissions:
   - 'access kint'
   - 'access shortcuts'
   - 'access site-wide contact form'
-  - 'access user contact forms'
-  - 'access user profiles'
-  - 'cancel account'
-  - 'change own username'
-  - 'create article content'
-  - 'create page content'
-  - 'delete any article content'
-  - 'delete any page content'
-  - 'delete own article content'
-  - 'delete own page content'
-  - 'edit own article content'
-  - 'edit own comments'
-  - 'edit own page content'
-  - 'execute php code'
   - 'post comments'
   - 'search content'
-  - 'select account cancellation method'
   - 'skip comment approval'
-  - 'switch users'
   - 'use text format basic_html'
-  - 'view own unpublished content'

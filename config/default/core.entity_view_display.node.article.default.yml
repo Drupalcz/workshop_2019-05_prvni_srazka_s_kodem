@@ -1,4 +1,4 @@
-uuid: 271101ba-6bfd-4300-be2a-be2504b10c3b
+uuid: d7e2c3a3-ddc6-4452-8c4f-71b27d4e61c0
 langcode: en
 status: true
 dependencies:
@@ -8,10 +8,12 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.field_testovaci_pole
     - image.style.large
     - node.type.article
   module:
     - comment
+    - custom_widget
     - image
     - text
     - user
@@ -24,14 +26,14 @@ mode: default
 content:
   body:
     type: text_default
-    weight: 0
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
     label: hidden
   comment:
     type: comment_default
-    weight: 110
+    weight: 5
     region: content
     label: above
     settings:
@@ -40,7 +42,7 @@ content:
     third_party_settings: {  }
   field_image:
     type: image
-    weight: -1
+    weight: 1
     region: content
     settings:
       image_style: large
@@ -49,14 +51,22 @@ content:
     label: hidden
   field_tags:
     type: entity_reference_label
-    weight: 10
+    weight: 3
     region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
+  field_testovaci_pole:
+    weight: 0
+    label: above
+    settings:
+      foo: bar
+    third_party_settings: {  }
+    type: custom_widget_example
+    region: content
   links:
-    weight: 100
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
