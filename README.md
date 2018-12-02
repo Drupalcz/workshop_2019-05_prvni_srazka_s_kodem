@@ -1,120 +1,44 @@
-# Composer template for Drupal projects
+# První strážka s kódem 30. 11. 2018
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+Drupal 8 instalace použitá školení.
 
-This project template provides a starter kit for managing your site
-dependencies with [Composer](https://getcomposer.org/).
+## Start projektu
 
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+Jedná se so standardní instanci založenou na https://github.com/drupal-composer/drupal-project Předpokládá se použití https://docs.devwithlando.io/  
 
-## Start the project
-
-* https://docs.devwithlando.io/started.html
-* `git@github.com:drupalcz/workshop-2018-12.git workshop`
+* Funkční Lando: https://docs.devwithlando.io/started.html
+* Získání kódu: `git@github.com:drupalcz/workshop-2018-12.git workshop` nebo lze stáhnout balíček https://github.com/Drupalcz/workshop/archive/master.zip
 * `cd workshop`
 * `lando start`
 * `lando composer install`
-* `lando drush si`
-* `lando drush uli`
+* `cp web/sites/default/default.settings.local.php web/sites/default/settings.local.php`
+* `lando drush site:install minimal --yes`
+* `lando drush config-set "system.site" uuid "ede96957-b63e-4c35-92e1-f5ac95519194" --yes`
+* `lando drush config:import --yes`
+* `lando drush uli --uri=http://workshop.localhost`
 
-## Usage
+## Užitečné příkazy
 
-With `composer require ...` you can download new dependencies to your 
-installation.
+Přidat modul https://www.drupal.org/project/paragraphs včetně jeho závislostí.
+* `lando composer require drupal/paragraphs`
 
-```
-cd some-dir
-composer require drupal/devel:~1.0
-```
+Zapne modul https://www.drupal.org/project/paragraphs včetně jeho závislostí.
+* `lando drush pm:enable paragraphs`
+* `lando drush en paragraphs` (zkratka)
 
-The `composer create-project` command passes ownership of all files to the 
-project that is created. You should create a new git repository, and commit 
-all files not excluded by the .gitignore file.
+Odinstaluje modul https://www.drupal.org/project/paragraphs včetně jeho závislostí.
+* `lando drush pm:uninstall paragraphs`
+* `lando drush pmu paragraphs` (zkratka)
 
-## What does the template do?
+Dostupné drush příkazy
+* `lando drush`
 
-When installing the given `composer.json` some tasks are taken care of:
+Přidat modul https://www.drupal.org/project/paragraphs včetně jeho závislostí.
+* `lando composer require drupal/paragraphs`
 
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
-* Creates environment variables based on your .env file. See [.env.example](.env.example).
+### Přidání patche do modulu
 
-## Updating Drupal Core
-
-This project will attempt to keep all of your Drupal Core files up-to-date; the 
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
-is used to ensure that your scaffold files are updated every time drupal/core is 
-updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
-you may need to merge conflicts if any of your modified files are updated in a 
-new release of Drupal core.
-
-Follow the steps below to update your core files.
-
-1. Run `composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed. 
-   Review the files for any changes and restore any customizations to 
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish 
-   to perform these steps on a branch, and use `git merge` to combine the 
-   updated core files with your customized files. This facilitates the use 
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple; 
-   keeping all of your modifications at the beginning or end of the file is a 
-   good strategy to keep merges easy.
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
-
-## FAQ
-
-### Should I commit the contrib modules I download?
-
-Composer recommends **no**. They provide [argumentation against but also 
-workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-
-### Should I commit the scaffolding files?
-
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
-index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
-to not check them into your version control system (e.g. git). If that is the case for your project it might be
-convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@composer drupal:scaffold` as post-install and post-update command in your composer.json:
-
-```json
-"scripts": {
-    "post-install-cmd": [
-        "@composer drupal:scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@composer drupal:scaffold",
-        "..."
-    ]
-},
-```
-### How can I apply patches to downloaded modules?
-
-If you need to apply patches (depending on the project being modified, a pull 
-request is often a better solution), you can do so with the 
-[composer-patches](https://github.com/cweagans/composer-patches) plugin.
-
-To add a patch to drupal module foobar insert the patches section in the extra 
-section of composer.json:
+V `composer.json`:
 ```json
 "extra": {
     "patches": {
@@ -124,18 +48,36 @@ section of composer.json:
     }
 }
 ```
-### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
 
-Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).
+## Odkazy zmíněné na školení
 
-### How do I specify a PHP version ?
+* Czech Drupal Association | Drupal.org https://www.drupal.org/czech-drupal-association
+* Individual Member directory | Drupal.org https://www.drupal.org/association/support/individual-members?country=CZ&n=&fn=&ln=&expertise=&sort_by=field_da_join_date_value&sort_order=ASC
+* radimklaska | Drupal.org https://www.drupal.org/u/radimklaska
+* martin_klima | Drupal.org https://www.drupal.org/u/martin_klima
+* Slovak Drupal Association | Drupal.org https://www.drupal.org/slovak-drupal-association
+* Composer https://getcomposer.org/
+* Drush https://www.drush.org/
+* Drush Commands https://drushcommands.com/
+* Git https://git-scm.com/
+* nic_progit_v35_n https://knihy.nic.cz/files/nic/edice/scott_chacon_pro_git.pdf
+* Overview · Lando Documentation https://docs.devwithlando.io/
+* Form API Reference | Drupal 7.x | Drupal API https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x
+* drush generate for drush 9.x https://drushcommands.com/drush-9x/core/generate/
+* Create a custom field widget | Drupal 8 guide on Drupal.org https://www.drupal.org/docs/8/creating-custom-modules/create-a-custom-field-widget
+* Bootstrap | Drupal.org https://www.drupal.org/project/bootstrap
+* Sub-Theming | Sub-Theming.md | 8.x-3.x | Drupal Bootstrap https://drupal-bootstrap.org/api/bootstrap/docs%21Sub-Theming.md/group/sub_theming/8
+* Ægir Hosting System https://www.aegirproject.org/
+* OpenDevShop: Drupal Cloud Hosting & Testing Platform https://getdevshop.com/
+* Drupalcz/drupalcz - Travis CI https://travis-ci.org/Drupalcz/drupalcz
+* PhpStorm templates | Drupal.org https://www.drupal.org/project/phpstorm_templates
+* Devel | Drupal.org https://www.drupal.org/project/devel
+* Form API Reference | Drupal 7.x | Drupal API https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x#date
+* hook_form_alter | form.api.php | Drupal 8.6.x | Drupal API https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Form%21form.api.php/function/hook_form_alter/8.6.x
+* hook_form_FORM_ID_alter | form.api.php | Drupal 8.6.x | Drupal API https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Form%21form.api.php/function/hook_form_FORM_ID_alter/8.6.x
+* PHP: if - Manual http://php.net/manual/en/control-structures.if.php
+* PHP: switch - Manual http://php.net/manual/en/control-structures.switch.php
+* PHP: Arrays - Manual http://php.net/manual/en/language.types.array.php
+* PhpStorm: JetBrains Toolbox subscription https://www.jetbrains.com/phpstorm/buy/#edition=commercial
+* Drupal Association Technology Partner JetBrains offers free PhpStorm licenses for contributors | Drupal.org https://www.drupal.org/drupalorg/blog/drupal-association-technology-partner-jetbrains-offers-free-phpstorm-licenses-for
 
-Currently Drupal 8 supports PHP 5.5.9 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
-
-To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
-```json
-"config": {
-    "sort-packages": true,
-    "platform": {"php": "5.5.9"}
-},
-```
