@@ -7,15 +7,18 @@ Drupal 8 instalace použitá školení.
 Jedná se so standardní instanci založenou na https://github.com/drupal-composer/drupal-project Předpokládá se použití https://docs.devwithlando.io/  
 
 * Funkční Lando: https://docs.devwithlando.io/started.html
-* Získání kódu: `git@github.com:drupalcz/workshop-2018-12.git workshop` nebo lze stáhnout balíček https://github.com/Drupalcz/workshop/archive/master.zip
+* Získání kódu: `git clone git@github.com:Drupalcz/workshop.git` nebo lze stáhnout balíček https://github.com/Drupalcz/workshop/archive/master.zip
 * `cd workshop`
+* Start lokálního vývojového prostředí
 * `lando start`
+* Stažení všech nutných softwarových balíčků
 * `lando composer install`
+* Příprava konfigurace Drupalu
 * `cp web/sites/default/default.settings.local.php web/sites/default/settings.local.php`
-* `lando drush site:install minimal --yes`
-* `lando drush config-set "system.site" uuid "ede96957-b63e-4c35-92e1-f5ac95519194" --yes`
-* `lando drush config:import --yes`
-* `lando drush uli --uri=http://workshop.localhost`
+* Instalace Drupalu a import uložené konfigurace
+* `lando drush si minimal --existing-config`
+* Získání administrátorského přístupu - změna hesla pro administrátora
+* `lando drush upwd admin mojetajneheslo`
 
 ## Užitečné příkazy
 
@@ -80,4 +83,5 @@ V `composer.json`:
 * PHP: Arrays - Manual http://php.net/manual/en/language.types.array.php
 * PhpStorm: JetBrains Toolbox subscription https://www.jetbrains.com/phpstorm/buy/#edition=commercial
 * Drupal Association Technology Partner JetBrains offers free PhpStorm licenses for contributors | Drupal.org https://www.drupal.org/drupalorg/blog/drupal-association-technology-partner-jetbrains-offers-free-phpstorm-licenses-for
+* Examples and docs for using Lando - https://github.com/HBFCrew/lando-docs-examples
 
