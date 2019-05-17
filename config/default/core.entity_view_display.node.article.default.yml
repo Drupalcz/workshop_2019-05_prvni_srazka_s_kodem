@@ -13,7 +13,6 @@ dependencies:
     - node.type.article
   module:
     - comment
-    - custom_widget
     - image
     - text
     - user
@@ -58,12 +57,12 @@ content:
       link: true
     third_party_settings: {  }
   field_testovaci_pole:
-    weight: 0
+    weight: 6
     label: above
     settings:
-      foo: bar
+      link_to_entity: false
     third_party_settings: {  }
-    type: custom_widget_example
+    type: string
     region: content
   links:
     weight: 4

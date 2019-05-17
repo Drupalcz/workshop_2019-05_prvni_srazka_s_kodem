@@ -12,7 +12,6 @@ dependencies:
     - node.type.article
   module:
     - comment
-    - custom_widget
     - image
     - path
     - text
@@ -97,12 +96,13 @@ content:
     region: content
     third_party_settings: {  }
   title:
-    type: custom_widget_custom_text_widget
-    weight: 0
-    region: content
+    weight: 122
     settings:
-      foo: sdfsfdf
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5

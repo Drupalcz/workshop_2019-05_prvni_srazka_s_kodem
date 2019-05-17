@@ -13,9 +13,6 @@ module:
   config: 0
   contact: 0
   contextual: 0
-  custom_form: 0
-  custom_form2: 0
-  custom_widget: 0
   datetime: 0
   dblog: 0
   devel: 0

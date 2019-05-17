@@ -1,4 +1,4 @@
-# První strážka s kódem 30. 11. 2018
+# První strážka s kódem 18. 5. 2019
 
 Drupal 8 instalace použitá školení.
 
@@ -7,8 +7,8 @@ Drupal 8 instalace použitá školení.
 Jedná se so standardní instanci založenou na https://github.com/drupal-composer/drupal-project Předpokládá se použití https://docs.devwithlando.io/  
 
 * Funkční Lando: https://docs.devwithlando.io/started.html
-* Získání kódu: `git clone git@github.com:Drupalcz/workshop.git` nebo lze stáhnout balíček https://github.com/Drupalcz/workshop/archive/master.zip
-* `cd workshop`
+* Získání kódu: `git clone git@github.com:Drupalcz/workshop_2019-05_prvni_srazka_s_kodem.git` nebo lze stáhnout balíček https://github.com/Drupalcz/workshop_2019-05_prvni_srazka_s_kodem/archive/master.zip
+* `cd workshop_2019-05_prvni_srazka_s_kodem`
 * Start lokálního vývojového prostředí
 * `lando start`
 * Stažení všech nutných softwarových balíčků
