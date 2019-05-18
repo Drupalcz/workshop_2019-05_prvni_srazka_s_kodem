@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Contains camp.module..
+ */
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function camp_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == "user_form") {
+    $form['#validate'][] = "camp_custom_user_form_validate";
+  }
+}
+
+
+
+/**
+ * Implements custom validation().
+ */
+function camp_custom_user_form_validate(&$form, &$form_state) {
+//  ksm($form_state);
+  $form_values = $form_state->getValues();
+//  ksm($form_values);
+
+  if ($form_values["name"] == "admin") {
+    $form_state->setErrorByName('name', t('Admin je moc napadne :-)'));
+  }
+
+}

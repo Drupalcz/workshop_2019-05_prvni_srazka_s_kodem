@@ -1,0 +1,9 @@
+
+camp.testovaci_form:
+  path: '/camp'
+  defaults:
+    _form: '\Drupal\camp\Form\TestovaciForm'
+    _title: 'TestovaciForm'
+  requirements:
+    _access: 'TRUE'
+  

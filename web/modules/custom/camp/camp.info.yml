@@ -1,0 +1,5 @@
+name: DrupalCampCS
+type: module
+description: Testovaci modul.
+package: DrupalCamp
+core: 8.x
